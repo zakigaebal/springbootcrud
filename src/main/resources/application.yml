@@ -1,0 +1,25 @@
+
+server:
+  port: 8098
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: cdy
+    password: 1234
+
+# xml location
+# VO location
+mybatis:
+  mapper-locations: classpath:mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.example.springbootcrud.vo
+
+
+
+
