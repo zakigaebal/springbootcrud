@@ -14,6 +14,7 @@ public class MemberController {
 	
 	@Autowired
 	MemberServiceImpl memberService;
+
 	
 	@GetMapping("/member/all")
 	public List<MemberVO> selectAllMembers(){
