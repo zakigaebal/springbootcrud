@@ -18,58 +18,71 @@ import java.util.List;
 
 @Api(tags = {"대댓글게시판"})
 @Controller
-public class IndexController {
+public class BoardController {
 
     @Autowired
     private BoardService s;
-    @RequestMapping(value="/", method=RequestMethod.GET)
+
+    @GetMapping("/")
     public String root() {
-        return "index";
+        return "board";
     }
-    @RequestMapping(value="/index", method=RequestMethod.GET)
-    public String index() {
-        return "index";
-    }
-    @RequestMapping(value="/board", method=RequestMethod.GET)
+
+    @GetMapping("/board")
     public String board() {
         return "board";
     }
-    @RequestMapping(value="/write", method=RequestMethod.GET)
+
+    @GetMapping("/write")
     public String write() {
         return "write";
     }
-    @RequestMapping(value="/view", method=RequestMethod.GET)
+
+    @GetMapping("/view")
     public String view() {
         return "view";
     }
-    @RequestMapping(value="/writeAction", method=RequestMethod.POST)
+
+    @PostMapping("/writeAction")
     public String writeAction(
-            HttpServletRequest req,@RequestParam("file") MultipartFile file,
             @RequestParam("title")String title,
             @RequestParam("contents")String contents) throws IllegalStateException, IOException {
-        String PATH = req.getSession().getServletContext().getRealPath("/") + "resources/";
-        if (!file.getOriginalFilename().isEmpty()) {
-            file.transferTo(new File(PATH + file.getOriginalFilename()));
-        }
-        s.addBoard(new Board(0, title, contents, file.getOriginalFilename()));
+        s.addBoard(new Board(0, title, contents
+                , null
+        ));
         return "board";
     }
-    @RequestMapping(value="/boardList", method=RequestMethod.GET)
+
+    @GetMapping("/boardList")
     @ResponseBody
     public List<Board> boardList(){
         return s.getBoard();
     }
-    @RequestMapping(value="/boardView", method=RequestMethod.GET)
+    @GetMapping("/boardView")
     @ResponseBody
     public Board boardList(@RequestParam("idx")int idx){
         return s.getBoardOne(idx);
     }
-    @RequestMapping(value="/replyList", method=RequestMethod.GET)
+
+
+    //    게시글 삭제
+    @DeleteMapping("/board/del/{idx}")
+    public String deleteMember(@PathVariable int idx){
+        s.deleteMember(idx);
+        return "board";
+    }
+
+
+
+
+
+    @GetMapping("/replyList")
     @ResponseBody
     public List<Reply> replyList(@RequestParam("idx")int boardIdx){
         return s.getReply(boardIdx);
     }
-    @RequestMapping(value="/writeReply", method=RequestMethod.POST)
+
+    @PostMapping("/writeReply")
     public String writeReply(
             @RequestParam("idx")int idx,
             @RequestParam("replyIdx")int replyIdx,

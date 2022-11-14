@@ -83,22 +83,7 @@ function drawReply(replys) {
 </head>
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>과제</h1>
-</div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index">홈</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="board">게시판</a>
-      </li>
-    </ul>
-  </div>  
-</nav>
 
 <div class="container" style="margin-top:30px">
 	<div class="row">
@@ -107,9 +92,9 @@ function drawReply(replys) {
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-6">
-	      <div id = "image"></div>
-		</div>
+<%--		<div class="col-sm-6">--%>
+<%--	      <div id = "image"></div>--%>
+<%--		</div>--%>
 		<div class="col-sm-6">
 			<div class="row">
 				<div class="col-sm-12">

@@ -21,22 +21,9 @@
 </head>
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>과제</h1>
-</div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index">홈</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="board">게시판</a>
-      </li>
-    </ul>
-  </div>  
-</nav>
+
+
 
 <div class="container" style="margin-top:30px">
 	<div class="row">
@@ -44,14 +31,14 @@
 	      <h2>글쓰기</h2>
 	        <form action="writeAction" method = "POST" enctype="multipart/form-data">
 				<div class="form-group">
-				  <label for="usr">제목:</label>
+				  <%--@declare id="user"--%><label for="user">제목:</label>
 				  <input type="text" class="form-control" id="title" name = "title">
 				</div>
+<%--			    <div class="form-group">--%>
+<%--			      <input type="file" class="form-control-file border" name="file">--%>
+<%--			    </div>--%>
 			    <div class="form-group">
-			      <input type="file" class="form-control-file border" name="file">
-			    </div>
-			    <div class="form-group">
-				  <label for="comment">내용:</label>
+				  <%--@declare id="comment"--%><label for="comment">내용:</label>
 				  <textarea class="form-control" rows="5" id="contents" name = "contents"></textarea>
 				</div>
 			    <button type="submit" class="btn btn-primary">글쓰기</button>
